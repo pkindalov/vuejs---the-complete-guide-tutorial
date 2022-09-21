@@ -23,10 +23,19 @@
       <!-- <button v-on:click="counter++">Add</button>
       <button v-on:click="counter--">Remove</button> -->
       <button v-on:click="add(10)">Add</button>
-      <button v-on:click="subtract(5)">Remove</button>
+      <button v-on:click.right="subtract(5)">Remove</button>
       <p>Result: {{ counter }}</p>
-      <input type="text" v-on:input="setName($event, 'Family')" />
+      <input
+        type="text"
+        v-on:input="setName($event, 'Family')"
+        v-on:keyup.enter="confirmInput"
+      />
       <p>Your name: {{ name }}</p>
+      <form action="" v-on:submit.prevent="submitForm">
+        <input type="text" />
+        <p>Your name: {{confirmedName}}</p>
+        <button>Sign Up</button>
+      </form>
     </section>
   </body>
 </html>
