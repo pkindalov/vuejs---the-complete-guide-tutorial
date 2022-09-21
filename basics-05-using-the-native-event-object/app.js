@@ -5,9 +5,21 @@ const app = Vue.createApp({
       name: ''
     };
   },
+  computed: {
+    fullname() {
+      console.log('Running again');
+      if (this.name === '') return '';
+      return this.name + ' ' + 'Schwarzmuller';
+    }
+  },
   methods: {
-    setName(event, lastName) {
-      this.name = event.target.value + ' ' + lastName;
+    outputFullName() {
+      console.log('Running again');
+      if (this.name === '') return '';
+      return this.name + ' ' + 'Schwarzmuller';
+    },
+    setName(event) {
+      this.name = event.target.value;
     },
     add(num) {
       this.counter = this.counter + num;
@@ -15,6 +27,9 @@ const app = Vue.createApp({
     reduce(num) {
       this.counter = this.counter - num;
       // this.counter--;
+    },
+    resetInput() {
+      this.name = '';
     }
   }
 });
