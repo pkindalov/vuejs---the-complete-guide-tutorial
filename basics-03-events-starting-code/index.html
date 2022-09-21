@@ -18,8 +18,12 @@
     </header>
     <section id="events">
       <h2>Events in Action</h2>
-      <button v-on:click="counter++">Add</button>
-      <button v-on:click="counter--">Remove</button>
+      <!-- Putting a logic directy in the brackets is considering for a bad practice. Here it is just an example
+           how to attach event listener to elements -->
+      <!-- <button v-on:click="counter++">Add</button>
+      <button v-on:click="counter--">Remove</button> -->
+      <button v-on:click="add">Add</button>
+      <button v-on:click="subtract">Remove</button>
       <p>Result: {{ counter }}</p>
     </section>
   </body>
