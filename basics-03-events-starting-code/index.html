@@ -22,9 +22,11 @@
            how to attach event listener to elements -->
       <!-- <button v-on:click="counter++">Add</button>
       <button v-on:click="counter--">Remove</button> -->
-      <button v-on:click="add">Add</button>
-      <button v-on:click="subtract">Remove</button>
+      <button v-on:click="add(10)">Add</button>
+      <button v-on:click="subtract(5)">Remove</button>
       <p>Result: {{ counter }}</p>
+      <input type="text" v-on:input="setName($event, 'Family')" />
+      <p>Your name: {{ name }}</p>
     </section>
   </body>
 </html>
