@@ -2,15 +2,26 @@ const app = Vue.createApp({
   data() {
     return {
       counter: 0,
-      name: ''
+      name: '',
+      fullName: ''
     };
   },
+  watch: {
+    name(value) {
+      if (value === 0) {
+        this.fullName = '';
+      } else {
+        this.fullName = value + ' ' + 'Schwarzmuller';
+      }
+    } //now the connection between property name and the method is established.
+    //thats mean that if the name property is changed, then the name method will be re-executed
+  },
   computed: {
-    fullname() {
-      console.log('Running again');
-      if (this.name === '') return '';
-      return this.name + ' ' + 'Schwarzmuller';
-    }
+    // fullname() {
+    //   console.log('Running again');
+    //   if (this.name === '') return '';
+    //   return this.name + ' ' + 'Schwarzmuller';
+    // }
   },
   methods: {
     outputFullName() {
@@ -30,6 +41,7 @@ const app = Vue.createApp({
     },
     resetInput() {
       this.name = '';
+      this.fullName = '';
     }
   }
 });
