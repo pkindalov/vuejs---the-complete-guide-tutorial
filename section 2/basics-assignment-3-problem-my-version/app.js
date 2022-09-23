@@ -1,31 +1,28 @@
 Vue.createApp({
-  data() {
-    return {
-      sum: 0,
-    }
-  },
-  watch: {
-    sum(oldValue, newValue) {
-      if (oldValue !== newValue) {
-        setTimeout(() => {
-          this.sum = 0;
-        }, 5000)
-      }
-    }
-  },
-  computed: {
-    calcSum() {
-      if (this.sum <= 37) return this.sum + ' Not there yet';
-      if (this.sum > 37) return this.sum + ' Too much!';
+    data() {
+        return {
+            sum: 0,
+        }
     },
-  },
-  methods: {
-    increaseByFive() {
-      this.sum += 5;
+    watch: {
+        calcSum() {
+            const that = this;
+            setTimeout(() => {
+                that.sum = 0;
+            }, 5000);
+        }
     },
-    increaseByOne() {
-      this.sum += 1;
+    computed: {
+        calcSum() {
+            if (this.sum < 37) return ' Not there yet';
+            if (this.sum === 37) return this.sum;
+            if (this.sum > 37) return ' Too much!';
+        },
+    },
+    methods: {
+        increase(num) {
+            this.sum += num;
+        }
     }
-  }
 
 }).mount('#assignment');
