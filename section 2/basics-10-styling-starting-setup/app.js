@@ -8,9 +8,9 @@ const app = Vue.createApp({
     },
     methods: {
         boxSelected(box) {
-            if (box === 'A') this.boxASelected = true;
-            if (box === 'B') this.boxBSelected = true;
-            if (box === 'C') this.boxCSelected = true;
+            if (box === 'A') this.boxASelected = !this.boxASelected;
+            if (box === 'B') this.boxBSelected = !this.boxBSelected;
+            if (box === 'C') this.boxCSelected = !this.boxCSelected;
         }
     }
 });
