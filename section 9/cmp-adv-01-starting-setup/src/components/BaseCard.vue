@@ -1,14 +1,21 @@
 <template>
   <div>
-    <header>
-      <slot name="header"></slot>
+    <header v-if="$slots.header">
+      <slot name="header">
+        <!-- <h2>The Default Slot Content</h2> -->
+      </slot>
     </header>
     <slot></slot>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  mounted() {
+    console.log(this.$slots.header);
+    // console.log(this.$slots);
+  },
+};
 </script>
 
 <style scoped>
@@ -18,5 +25,11 @@ div {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 1rem;
+}
+
+section header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>
