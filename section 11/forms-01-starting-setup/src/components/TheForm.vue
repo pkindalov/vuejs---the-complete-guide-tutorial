@@ -100,7 +100,7 @@
     </div>
 
     <div class="form-control">
-      <rating-control></rating-control>
+      <rating-control v-model="rating"></rating-control>
     </div>
 
     <!-- Single checkbox -->
@@ -134,6 +134,7 @@ export default {
       how: null,
       confirm: false,
       userNameValidity: 'pending',
+      rating: '',
     };
   },
   methods: {
@@ -156,6 +157,9 @@ export default {
       console.log('Confirm: ');
       console.log(this.confirm);
       this.confirm = false;
+      console.log('Rating: ');
+      console.log(this.rating);
+      this.rating = null;
     },
     validateInput() {
       if (this.userName === '') {
