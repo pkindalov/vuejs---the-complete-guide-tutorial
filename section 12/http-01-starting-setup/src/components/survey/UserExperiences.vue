@@ -8,10 +8,11 @@
         >
       </div>
       <p v-if="isLoading">Loading...</p>
+      <p v-else-if="!isLoading && error">{{ error }}</p>
       <p v-else-if="!isLoading && (!results || results.length === 0)">
         No stored experienced found. Start adding some survey results first
       </p>
-      <ul v-else-if="!isLoading && results && results.length > 0">
+      <ul v-else>
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -34,13 +35,16 @@ export default {
     return {
       results: [],
       isLoading: false,
+      error: null,
     };
   },
   methods: {
     loadExperiences() {
       this.isLoading = true;
+      this.error = null;
       fetch(
         'https://vue-http-demo-165cc-default-rtdb.europe-west1.firebasedatabase.app/surveys.json'
+        // 'https://vue-http-demo-165cc-default-rtdb.europe-west1.firebasedatabase.app/surveys'
       )
         .then((response) => {
           if (response.ok) {
@@ -58,6 +62,11 @@ export default {
             });
           }
           this.results = results;
+        })
+        .catch((error) => {
+          console.log(error);
+          this.isLoading = false;
+          this.error = 'Failed to fetch data - please try again later';
         });
     },
   },
