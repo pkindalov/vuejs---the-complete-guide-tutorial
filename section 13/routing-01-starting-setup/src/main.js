@@ -56,6 +56,16 @@ router.beforeEach(function (to, from, next) {
   next();
 });
 
+router.afterEach(function (to, from) {
+  console.log('Global afterEach:');
+  console.log(to, from);
+  //-sending analytics data to for example or
+  //-to log every navigation action
+  //-to log when user changes pages
+  //-you can't control what the user sees here, because it is too late. The navigation is already confirmed. Because of that you don't receive next() also.
+
+});
+
 const app = createApp(App);
 app.use(router);
 
