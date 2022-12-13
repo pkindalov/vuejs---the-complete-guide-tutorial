@@ -15,7 +15,16 @@
     <!-- For example default classes v-enter-to, v-enter-active, v-enter-from becomes -->
     <!-- para-enter-to, para-enter-active, para-enter-from. The same is with v-leave classes -->
     <!-- para-leave-to, para-leave-active and para-leave-from -->
-    <transition name="para">
+
+    <transition
+      name="para"
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @before-leave="beforeLeave"
+      @leave="leave"
+      @after-leave="afterLeave"
+    >
       <p v-if="paraIsVisible">This is only sometimes visible...</p>
     </transition>
     <button @click="toggleParagraph">Toggle Paragraph</button>
@@ -48,6 +57,31 @@ export default {
     };
   },
   methods: {
+    beforeEnter(el) {
+      console.log('beforeEnter');
+      console.log(el);
+    },
+    enter(el) {
+      console.log('enter');
+      console.log(el);
+    },
+    afterEnter(el) {
+      //after animation is finished
+      console.log('afterEnter');
+      console.log(el);
+    },
+    beforeLeave(el) {
+      console.log('beforeLeave');
+      console.log(el);
+    },
+    leave(el) {
+      console.log('leave');
+      console.log(el);
+    },
+    afterLeave(el) {
+      console.log('afterLeave');
+      console.log(el);
+    },
     showUsers() {
       this.usersAreVisible = true;
     },
@@ -149,7 +183,7 @@ so Vue to be able to read the duration time from these classes */
 */
 .para-enter-active {
   /* transition: all 0.3s ease-out; */
-  animation: slide-scale 0.3s ease-out;
+  animation: slide-scale 2s ease-out;
 }
 
 /* End or final state */
