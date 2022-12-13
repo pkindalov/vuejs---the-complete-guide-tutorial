@@ -4,7 +4,18 @@
     <button @click="animateBlock">Animate</button>
   </div>
   <div class="container">
-    <transition>
+    <!-- The following change v-enter-from, v-enter-to, v-enter-active with entirely custom class names -->
+    <!-- <transition
+      enter-to-class="custom-class-name"
+      enter-active-class="custom-class-name"
+      enter-from-class="custom-class-name"
+    > -->
+
+    <!-- The following name attribute just use your prefix instead of the defaults ones -->
+    <!-- For example default classes v-enter-to, v-enter-active, v-enter-from becomes -->
+    <!-- para-enter-to, para-enter-active, para-enter-from. The same is with v-leave classes -->
+    <!-- para-leave-to, para-leave-active and para-leave-from -->
+    <transition name="para">
       <p v-if="paraIsVisible">This is only sometimes visible...</p>
     </transition>
     <button @click="toggleParagraph">Toggle Paragraph</button>
@@ -96,7 +107,7 @@ button:active {
 so Vue to be able to read the duration time from these classes */
 
 /* when the element is appearing in the dom for the first time */
-.v-enter-from {
+.para-enter-from {
   /* opacity: 0;
   transform: translateY(-30px); */
 }
@@ -104,28 +115,28 @@ so Vue to be able to read the duration time from these classes */
 /* this is the place where for example add the transition css property 
    to tell Vue to watch for all css properties that might be animated 
 */
-.v-enter-active {
+.para-enter-active {
   /* transition: all 0.3s ease-out; */
   animation: slide-scale 0.3s ease-out;
 }
 
 /* End or final state */
-.v-enter-to {
+.para-enter-to {
   /* opacity: 1;
   transform: translateY(0); */
 }
 
-.v-leave-from {
+.para-leave-from {
   /* opacity: 1;
   transform: translateY(0); */
 }
 
-.v-leave-active {
+.para-leave-active {
   /* transition: all 0.3s ease-in; */
   animation: slide-scale 0.3s ease-out;
 }
 
-.v-leave-to {
+.para-leave-to {
   /* opacity: 0;
   transform: translateY(30px); */
 }
