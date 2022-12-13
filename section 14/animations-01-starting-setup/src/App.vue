@@ -92,6 +92,42 @@ button:active {
   animation: slide-fade 0.3s ease-out forwards;
 }
 
+/* We should include at least one transition or animation, 
+so Vue to be able to read the duration time from these classes */
+
+/* when the element is appearing in the dom for the first time */
+.v-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+/* this is the place where for example add the transition css property 
+   to tell Vue to watch for all css properties that might be animated 
+*/
+.v-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+/* End or final state */
+.v-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.v-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.v-leave-active {
+  transition: all 0.3s ease-in;
+}
+
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
 @keyframes slide-fade {
   0% {
     transform: translateX(0) scale(1);
