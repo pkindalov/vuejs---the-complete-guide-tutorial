@@ -68,9 +68,21 @@ li {
 
 .user-list-leave-active {
   transition: all 1s ease-in;
+  position: absolute;
 }
 .user-list-leave-to {
   opacity: 0;
   transform: translateX(30px);
+}
+
+/* -move is a prefix of a special clause which allow to us to control the animation
+   of the other elements which are not gettting added or removed but  
+   which also might need to move around to make place for the new element
+   or to fill up the space of the leaving element
+
+   Vue will use transform under the hood for moving the elements
+   which are not added or removed around their new positions */
+.user-list-move {
+  transition: transform 0.8s ease;
 }
 </style>
