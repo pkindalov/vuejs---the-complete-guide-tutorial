@@ -1,5 +1,10 @@
 <template>
-  <div class="container">
+  <router-view v-slot="slotProps">
+    <transition name="fade-button" mode="out-in">
+      <component :is="slotProps.Component"></component>
+    </transition>
+  </router-view>
+  <!-- <div class="container">
     <users-list></users-list>
   </div>
 
@@ -7,20 +12,21 @@
     <div class="block" :class="{ animate: animatedBlock }"></div>
     <button @click="animateBlock">Animate</button>
   </div>
-  <div class="container">
-    <!-- The following change v-enter-from, v-enter-to, v-enter-active with entirely custom class names -->
-    <!-- <transition
+  <div class="container"> -->
+
+  <!-- The following change v-enter-from, v-enter-to, v-enter-active with entirely custom class names -->
+  <!-- <transition
       enter-to-class="custom-class-name"
       enter-active-class="custom-class-name"
       enter-from-class="custom-class-name"
     > -->
 
-    <!-- The following name attribute just use your prefix instead of the defaults ones -->
-    <!-- For example default classes v-enter-to, v-enter-active, v-enter-from becomes -->
-    <!-- para-enter-to, para-enter-active, para-enter-from. The same is with v-leave classes -->
-    <!-- para-leave-to, para-leave-active and para-leave-from -->
+  <!-- The following name attribute just use your prefix instead of the defaults ones -->
+  <!-- For example default classes v-enter-to, v-enter-active, v-enter-from becomes -->
+  <!-- para-enter-to, para-enter-active, para-enter-from. The same is with v-leave classes -->
+  <!-- para-leave-to, para-leave-active and para-leave-from -->
 
-    <transition
+  <!-- <transition
       :css="false"
       @before-enter="beforeEnter"
       @enter="enter"
@@ -49,15 +55,15 @@
   </base-modal>
   <div class="container">
     <button @click="showDialog">Show Dialog</button>
-  </div>
+  </div> -->
 </template>
 
 <script>
-import UsersList from './components/UsersList.vue';
+// import UsersList from './components/UsersList.vue';
 export default {
-  components: {
-    UsersList,
-  },
+  // components: {
+  //   UsersList,
+  // },
   data() {
     return {
       animatedBlock: false,
@@ -221,6 +227,17 @@ button:active {
 .animate {
   /* transform: translateX(-150px); */
   animation: slide-scale 0.3s ease-out forwards;
+}
+
+.route-enter-from {
+}
+.route-enter-active {
+  animation: slide-scale 0.4s ease-out;
+}
+.route-enter-to {
+}
+.route-leave-active {
+  animation: slide-scale 0.4s ease-in;
 }
 
 @keyframes slide-scale {
