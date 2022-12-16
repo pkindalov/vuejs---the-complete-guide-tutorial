@@ -6,7 +6,9 @@ import App from './App.vue';
 const store = createStore({
   state() {
     return {
-      counter: 0
+      counter: 0,
+      // isLogged: false //my version
+      isLoggedIn: false, //author version
     }
   },
   //Mutations are clearly defined methods, which have the logic to update the state.
@@ -22,6 +24,19 @@ const store = createStore({
     },
     increase(state, payload) {
       state.counter = state.counter + payload.value;
+    },
+    //my version
+    // logIn(state) {
+    //   state.isLogged = true;
+    //   console.log(state.isLogged);
+    // },
+    // logOut(state) {
+    //   state.isLogged = false;
+    // }
+
+    //author version
+    setAuth(state, payload) {
+      state.isLoggedIn = payload.isAuth;
     }
   },
   actions: {
@@ -32,6 +47,19 @@ const store = createStore({
     },
     increase(context, payload) {
       context.commit('increase', payload);
+    },
+    //my version  
+    // logIn(context) {
+    //   context.commit('logIn');
+    // },
+    // logOut(context) {
+    //   context.commit('logOut');
+    // }
+    login(context) {
+      context.commit('setAuth', { isAuth: true });
+    },
+    logout(context) {
+      context.commit('setAuth', { isAuth: false });
     }
   },
   getters: {
@@ -43,6 +71,13 @@ const store = createStore({
       if (finalCounter < 0) return 0;
       if (finalCounter > 100) return 100;
       return finalCounter;
+    },
+    // my version
+    // isLogged(state) {
+    //   return state.isLogged;
+    // }
+    userIsAuthenticated(state) {
+      return state.isLoggedIn;
     }
   }
 });

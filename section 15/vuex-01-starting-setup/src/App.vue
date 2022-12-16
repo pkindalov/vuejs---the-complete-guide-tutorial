@@ -1,17 +1,27 @@
 <template>
-  <base-container title="Vuex">
+  <!-- my version -->
+  <!-- <base-container v-if="isLogged" title="Vuex"> -->
+
+  <!-- author version -->
+  <base-container v-if="isAuth" title="Vuex">
     <the-counter></the-counter>
     <favorite-value></favorite-value>
     <button @click="addOne">Add 10</button>
     <change-counter></change-counter>
   </base-container>
+
+  <base-container title="Auth">
+    <user-auth></user-auth>
+  </base-container>
 </template>
 
 <script>
+// import { mapGetters } from 'vuex';
 import BaseContainer from './components/BaseContainer.vue';
 import TheCounter from './components/TheCounter.vue';
 import ChangeCounter from './components/ChangeCounter.vue';
 import FavoriteValue from './components/FavoriteValue.vue';
+import UserAuth from './components/UserAuth.vue';
 
 export default {
   components: {
@@ -19,6 +29,18 @@ export default {
     TheCounter,
     ChangeCounter,
     FavoriteValue,
+    UserAuth,
+  },
+  //my version
+  // computed: {
+  //   ...mapGetters(['isLogged']),
+  // },
+
+  //author version
+  computed: {
+    isAuth() {
+      return this.$store.getters.userIsAuthenticated;
+    },
   },
   methods: {
     addOne() {
