@@ -14,7 +14,7 @@ export default {
     // ...mapActions(['increment', 'increase']),
 
     //you can use your custom name for the functions.
-    ...mapActions({
+    ...mapActions('numbers', {
       inc: 'increment',
       increase: 'increase',
     }),
