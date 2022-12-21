@@ -26,7 +26,6 @@
 
 <script>
 export default {
-  inject: ['cart'],
   computed: {
     isAuth() {
       // console.log(this.$store.getters.userIsAuthenticated);

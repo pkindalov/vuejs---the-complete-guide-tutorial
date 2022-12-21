@@ -7,7 +7,7 @@ export default {
   state() {
     return {
       items: [],
-      total: [],
+      total: 0,
       qty: 0
     }
   },
