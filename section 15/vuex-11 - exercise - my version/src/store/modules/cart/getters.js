@@ -7,5 +7,8 @@ export default {
   },
   getItems(state) {
     return state.items;
+  },
+  getProducts(state, rootState, rootGetters) {
+    return rootGetters;
   }
 }
