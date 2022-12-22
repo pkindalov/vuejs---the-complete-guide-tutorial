@@ -2,7 +2,7 @@
   <section>
     <ul>
       <product-item
-        v-for="prod in products"
+        v-for="prod in getProducts"
         :key="prod.id"
         :id="prod.id"
         :title="prod.title"
@@ -18,18 +18,23 @@
 import ProductItem from '../components/products/ProductItem.vue';
 
 export default {
-  inject: ['products'],
+  // inject: ['products'],
   components: {
     ProductItem,
+  },
+  computed: {
+    getProducts() {
+      return this.$store.getters['product/getProducts'];
+    },
   },
 };
 </script>
 
 <style scoped>
-  ul {
-    list-style: none;
-    margin: 2rem auto;
-    padding: 0;
-    max-width: 40rem;
-  }
+ul {
+  list-style: none;
+  margin: 2rem auto;
+  padding: 0;
+  max-width: 40rem;
+}
 </style>

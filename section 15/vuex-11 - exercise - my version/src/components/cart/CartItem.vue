@@ -27,10 +27,7 @@ export default {
   props: ['prodId', 'title', 'image', 'price', 'qty'],
   computed: {
     itemTotal() {
-      // return (this.price * this.qty).toFixed(2);
-      return (this.price * this.$store.getters['cart/getCartQuantity']).toFixed(
-        2
-      );
+      return (this.price * this.qty).toFixed(2);
     },
   },
   methods: {
