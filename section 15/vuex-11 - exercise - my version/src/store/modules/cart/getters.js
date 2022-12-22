@@ -10,5 +10,5 @@ export default {
   },
   getProducts(state, rootState, rootGetters) {
     return rootGetters;
-  }
-}
+  },
+};
