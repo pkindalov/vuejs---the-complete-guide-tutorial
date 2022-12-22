@@ -28,7 +28,6 @@
 export default {
   computed: {
     isAuth() {
-      // console.log(this.$store.getters.userIsAuthenticated);
       return this.$store.getters.userIsAuthenticated;
     },
     cartQuantity() {
