@@ -37,6 +37,15 @@ export default {
         this.formIsValid = false;
         return;
       }
+
+      const request = {
+        coachId: this.$route.params.id,
+        userEmail: this.email,
+        message: this.message,
+      };
+
+      this.$store.dispatch('requests/contactCoach', request);
+      this.$router.replace('/coaches');
     },
   },
 };
