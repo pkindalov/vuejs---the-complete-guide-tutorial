@@ -1,9 +1,7 @@
 export default {
-  registerCoach(contex, data) {
+  async registerCoach(contex, data) {
+    const userId = contex.rootGetters.userId;
     const coachData = {
-      //   id: new Date().toISOString(),
-      //   id: 'c3',
-      id: contex.rootGetters.userId,
       firstName: data.first,
       lastName: data.last,
       description: data.description,
@@ -11,6 +9,22 @@ export default {
       areas: data.areas,
     };
 
-    contex.commit('registerCoach', coachData);
+    const response = await fetch(
+      `https://vue-http-demo-165cc-default-rtdb.europe-west1.firebasedatabase.app/coaches/${userId}.json`,
+      {
+        method: 'PUT',
+        body: JSON.stringify(coachData),
+      }
+    );
+
+    // const responseData = await response.json();
+    if (!response.ok) {
+      //error handling here later
+    }
+
+    contex.commit('registerCoach', {
+      ...coachData,
+      id: userId,
+    });
   },
 };
