@@ -27,7 +27,9 @@ export default {
       id: userId,
     });
   },
-  async loadCoaches(contex) {
+  async loadCoaches(contex, payload) {
+
+    if (!payload.forceRefresh && !contex.getters.shouldUpdate) return;
     const response = await fetch(
       'https://vue-http-demo-165cc-default-rtdb.europe-west1.firebasedatabase.app/coaches.json'
     );
@@ -52,5 +54,6 @@ export default {
       coaches.push(coach);
     }
     contex.commit('setCoaches', coaches);
+    contex.commit('setFetchTimestamp');
   },
 };
