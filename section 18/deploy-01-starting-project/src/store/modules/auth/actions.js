@@ -16,11 +16,11 @@ export default {
   async auth(context, payload) {
     const mode = payload.mode;
     let url =
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBvOcmh_Avvu08bFdUHdmJzA06c6vV4h0E';
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDdPb1UPoshNZJuvMerWFljEmlgWYmwOU4';
 
     if (mode === 'signup') {
       url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBvOcmh_Avvu08bFdUHdmJzA06c6vV4h0E';
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDdPb1UPoshNZJuvMerWFljEmlgWYmwOU4';
     }
     const response = await fetch(url, {
       method: 'POST',
@@ -48,7 +48,7 @@ export default {
     localStorage.setItem('userId', responseData.localId);
     localStorage.setItem('tokenExpiration', expirationDate);
 
-    timer = setTimeout(function() {
+    timer = setTimeout(function () {
       context.dispatch('autoLogout');
     }, expiresIn);
 
@@ -68,7 +68,7 @@ export default {
       return;
     }
 
-    timer = setTimeout(function() {
+    timer = setTimeout(function () {
       context.dispatch('autoLogout');
     }, expiresIn);
 
