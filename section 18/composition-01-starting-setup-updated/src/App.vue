@@ -9,7 +9,8 @@
       <!-- <input type="text" placeholder="First Name" @input="setFirstName" />
       <input type="text" placeholder="Lirst Name" @input="setLastName" /> -->
       <input type="text" placeholder="First Name" v-model="firstName" />
-      <input type="text" placeholder="Lirst Name" v-model="lastName" />
+      <input type="text" placeholder="Lirst Name" ref="lastNameInput" />
+      <button @click="setLastName">Set Last Name</button>
     </div>
   </section>
 </template>
@@ -25,6 +26,7 @@ export default {
     // const uName = ref('Maximilian');
     const firstName = ref('');
     const lastName = ref('');
+    const lastNameInput = ref(null);
     const uAge = ref(31);
 
     const uName = computed(function name() {
@@ -67,6 +69,11 @@ export default {
       uAge.value = 33;
     }
 
+    function setLastName() {
+      // lastName.value = this.$refs.lastNameInput.value; //options API, this not work in composition API.
+      lastName.value = lastNameInput.value.value;
+    }
+
     // setTimeout(function () {
     //   // uName.value = 'Max';
     //   // uAge.value = 32;
@@ -87,7 +94,9 @@ export default {
       // setFirstName,
       // setLastName,
       firstName,
-      lastName,
+      lastNameInput,
+      setLastName,
+      // lastName,
     };
   },
   // data() {
