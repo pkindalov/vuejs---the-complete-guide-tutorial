@@ -6,16 +6,27 @@
 </template>
 
 <script>
-import { computed } from 'vue';
+import { computed, inject } from 'vue';
 export default {
-  props: ['firstName', 'lastName', 'age'],
+  // inject: [], -- in options api
+  props: ['firstName', 'lastName'],
   setup(props, context) {
     const uName = computed(function () {
       return props.firstName + ' ' + props.lastName;
     });
+
+    const age = inject('userAge');
+
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //!! DON'T!!! IT WILL NO THROW AN ERROR BUT IT IS HIGHLY UNPREDICTABLE.
+    //!! age.value = 32
+    //!! YOU MUST ONLY CHANGE INJECTED VALUES ON PLACE WHERE YOU PROVIDE THEM.
+    //!! IN THIS CASE IN APP.VUE FILE.
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     // context.emit('save-data', 1); = this.$emit('save-data', 1);
     console.log(context);
-    return { userName: uName };
+    return { userName: uName, age };
   },
   // computed: {
   //   userName() {

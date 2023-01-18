@@ -4,11 +4,7 @@
     <h3>{{ user.age }}</h3> -->
     <!-- <h2>{{ userName }}</h2>
     <h3>{{ age }}</h3> -->
-    <user-data
-      :first-name="firstName"
-      :last-name="lastName"
-      :age="age"
-    ></user-data>
+    <user-data :first-name="firstName" :last-name="lastName"></user-data>
     <button @click="setAge">Change Age</button>
     <div>
       <!-- <input type="text" placeholder="First Name" @input="setFirstName" />
@@ -21,7 +17,7 @@
 </template>
 
 <script>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, provide } from 'vue';
 import UserData from './components/UserData.vue';
 
 //for objects - reactive works only with objects
@@ -37,6 +33,8 @@ export default {
     const lastName = ref('');
     const lastNameInput = ref(null);
     const uAge = ref(31);
+
+    provide('userAge', uAge);
 
     const uName = computed(function name() {
       return firstName.value + ' ' + lastName.value;
@@ -112,6 +110,11 @@ export default {
   //   return {
   //     userName: 'Maximilian',
   //   };
+  // },
+  // provide() { -- in options api
+  //   return {
+  //     age: this.age
+  //   }
   // },
 };
 </script>
