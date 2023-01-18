@@ -6,7 +6,17 @@
 </template>
 
 <script>
-import { computed, inject } from 'vue';
+import {
+  computed,
+  inject,
+  onBeforeMount,
+  onMounted,
+  onBeforeUpdate,
+  onUpdated,
+  onBeforeUnmount,
+  onUnmounted,
+} from 'vue';
+
 export default {
   // inject: [], -- in options api
   props: ['firstName', 'lastName'],
@@ -23,6 +33,30 @@ export default {
     //!! YOU MUST ONLY CHANGE INJECTED VALUES ON PLACE WHERE YOU PROVIDE THEM.
     //!! IN THIS CASE IN APP.VUE FILE.
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    onBeforeMount(function () {
+      console.log('onBeforeMount');
+    });
+
+    onMounted(function () {
+      console.log('onMounted');
+    });
+
+    onBeforeUpdate(function () {
+      console.log('onBeforeUpdate');
+    });
+
+    onUpdated(function () {
+      console.log('onUpdated');
+    });
+
+    onBeforeUnmount(function () {
+      console.log('onBeforeUnmount');
+    });
+
+    onUnmounted(function () {
+      console.log('onUnmounted');
+    });
 
     // context.emit('save-data', 1); = this.$emit('save-data', 1);
     console.log(context);
