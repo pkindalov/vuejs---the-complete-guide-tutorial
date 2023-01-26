@@ -3,9 +3,16 @@
 </template>
 
 <script>
+import { useStore } from 'vuex';
+
 export default {
   setup() {
-    function inc() {}
+    const store = useStore(); //way for using store in composition api
+    //this.$store - the way used with options api
+
+    function inc() {
+      store.dispatch('increment');
+    }
 
     return { inc };
   },
