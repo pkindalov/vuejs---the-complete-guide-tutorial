@@ -16,6 +16,15 @@ export default {
   components: {
     UserAlert,
   },
+  //The Component options wins if there is a clash with the mixin. By default the data is simply combined
+  //but if there is a same data property like alertIsVisible in mixin and in the component,
+  //the component options wins, not mixin
+  data() {
+    return {
+      alertTitle: 'Delete User?',
+      // alertIsVisible: true,
+    };
+  },
   mixins: [alertMixin],
 };
 </script>
